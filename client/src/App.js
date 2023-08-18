@@ -5,7 +5,7 @@ import HomePage from "./pages/commonPages/HomePage.jsx";
 import BookingCreation from "./pages/bookingPages/BookingCreation.jsx";
 import FourOhFourError from "./pages/errorPages/FourOhFour.jsx";
 import GenericError from "./pages/errorPages/GenericError.jsx";
-import Medical from "./pages/medicalPages/Medical.jsx";
+import Medical from "./pages/bookingPages/Medical.jsx";
 
 import "./styles/App.css";
 
