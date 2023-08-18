@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Medical = () => {
   const [formData, setFormData] = useState({
@@ -23,50 +24,59 @@ const Medical = () => {
   };
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formName">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter your name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formMessage">
-          <Form.Label>Message</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={4}
-            placeholder="Enter your message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-        </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </Container>
+    <div>
+      <div className='container mt-5'>
+        <div className='row '>
+          <div className='col-md-12'>
+            <div className='card'>
+              <div className='card-header'>
+                <h4 >Medical Details
+                  {/* <Link to='/' className="btn btn-danger float-end">Back</Link> */}
+                </h4>
+              </ div>
+              <div className='card-body'>
+                <div className='mb-3 col-md-12 float-start'>
+                  <label className='float-start'>Emergency Person's Contact Name</label>
+                  <input type="text" name="course" className="form-control" />
+                </div>
+                <div className='mb-3 col-md-12 float-start'>
+                  <label className='float-start'>Allergies</label>
+                  <input type="text" name="course" className="form-control" />
+                </div>
+                <div className='mb-3 col-md-12 float-start'>
+                  <label className='float-start'>Surgical History</label>
+                  <input type="text" name="course" className="form-control" />
+                </div>
+                <div className='mb-3 col-md-12 float-start'>
+                  <label className='float-start'>Oxygen Level</label>
+                  <input type="text" name="course" className="form-control" />
+                </div>
+                <div className='mb-3 col-md-12 float-start'>
+                  <label className='float-start'>Heart Beat</label>
+                  <input type="text" name="course" className="form-control" />
+                </div>
+                <div className='mb-3 col-md-12 float-start'>
+                  <label className='float-start'>Pressure</label>
+                  <input type="text" name="course" className="form-control" />
+                </div>
+                <div className='mb-3 col-md-12 float-start'>
+                  <label className='float-start'>Blood Group</label>
+                  <input type="text" name="course" className="form-control" />
+                </div>
+                <div className='mb-3 col-md-12 float-start'>
+                  <label className='float-start'>Additional Note</label>
+                  <input type="text" name="course" className="form-control" />
+                </div>
+                <div className='mb-3 col-md-12 float-start'>
+                  <label className='float-start'>Surgical History</label>
+                  <input type="text" name="course" className="form-control" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
