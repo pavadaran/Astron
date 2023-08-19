@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const Medical = () => {
-  const [formData, setFormData] = useState({
+
+  const [medical, setMedical] = useState({
     name: '',
-    email: '',
-    message: '',
-  });
+    allergies: '',
+    History: '',
+    OxyLevel: '',
+    HeartBeat: '',
+    Pressure: '',
+    BloodGroup: '',
+    AdditionalNote: '',
+    SurgicalHistory: ''
+  })
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const handleInput = (e) => {
+    e.persist();
+    setMedical({ ...medical, [e.target.name]: e.target.value });
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form data:', formData);
-    // You can add your form submission logic here
-  };
+  console.log(medical);
 
   return (
     <div>
@@ -37,28 +35,29 @@ const Medical = () => {
               <div className='card-body'>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Emergency Person's Contact Name</label>
-                  <input type="text" name="course" className="form-control" />
+                  <input type="text" name="name" value={medical.name} onChange={handleInput} className="form-control" />
                 </div>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Allergies</label>
-                  <input type="text" name="course" className="form-control" />
+                  <input type="text" name="allergies" className="form-control" />
                 </div>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Surgical History</label>
-                  <input type="text" name="course" className="form-control" />
+                  <input type="text" name="History" className="form-control" />
                 </div>
                 <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Oxygen Level</label>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name='OxyLevel' className="form-select" aria-label="Default select example">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                   </select>
                 </div>
+                <div className='mb-3 col-md-2 float-start'></div>
                 <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Heart Beat</label>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name='HeartBeat' className="form-select" aria-label="Default select example">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -67,16 +66,17 @@ const Medical = () => {
                 </div>
                 <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Pressure</label>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name='Pressure' className="form-select" aria-label="Default select example">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                   </select>
                 </div>
+                <div className='mb-3 col-md-2 float-start'></div>
                 <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Blood Group</label>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name='BloodGroup' className="form-select" aria-label="Default select example">
                     <option selected>Open this select menu</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
@@ -85,11 +85,11 @@ const Medical = () => {
                 </div>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Additional Note</label>
-                  <input type="text" name="course" className="form-control" />
+                  <input type="text" name="AdditionalNote" className="form-control" />
                 </div>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Surgical History</label>
-                  <input type="text" name="course" className="form-control" />
+                  <input type="text" name="SurgicalHistory" className="form-control" />
                 </div>
               </div>
             </div>
