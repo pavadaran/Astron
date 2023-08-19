@@ -39,16 +39,15 @@ const Medical = () => {
                 </div>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Allergies</label>
-                  <input type="text" name="allergies" className="form-control" />
+                  <input type="text" name="allergies" value={medical.allergies} onChange={handleInput} className="form-control" />
                 </div>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Surgical History</label>
-                  <input type="text" name="History" className="form-control" />
+                  <input type="text" name="History" value={medical.History} onChange={handleInput} className="form-control" />
                 </div>
                 <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Oxygen Level</label>
-                  <select name='OxyLevel' className="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                  <select type='text' name='OxyLevel' value={medical.OxyLevel} onChange={handleInput} className="form-select" aria-label="Default select example">
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -57,8 +56,7 @@ const Medical = () => {
                 <div className='mb-3 col-md-2 float-start'></div>
                 <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Heart Beat</label>
-                  <select name='HeartBeat' className="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                  <select name='HeartBeat' value={medical.HeartBeat} onChange={handleInput} className="form-select" aria-label="Default select example">
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -66,8 +64,7 @@ const Medical = () => {
                 </div>
                 <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Pressure</label>
-                  <select name='Pressure' className="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                  <select name='Pressure' value={medical.Pressure} onChange={handleInput} className="form-select" aria-label="Default select example">
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -76,8 +73,7 @@ const Medical = () => {
                 <div className='mb-3 col-md-2 float-start'></div>
                 <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Blood Group</label>
-                  <select name='BloodGroup' className="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                  <select name='BloodGroup' value={medical.BloodGroup} onChange={handleInput} className="form-select" aria-label="Default select example">
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
@@ -85,11 +81,11 @@ const Medical = () => {
                 </div>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Additional Note</label>
-                  <input type="text" name="AdditionalNote" className="form-control" />
+                  <input type="text" value={medical.AdditionalNote} onChange={handleInput} name="AdditionalNote" className="form-control" />
                 </div>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Surgical History</label>
-                  <input type="text" name="SurgicalHistory" className="form-control" />
+                  <input type="text" value={medical.SurgicalHistory} onChange={handleInput} name="SurgicalHistory" className="form-control" />
                 </div>
               </div>
             </div>

@@ -14,7 +14,7 @@ function App() {
   return (
     <ErrorBoundary fallback={<GenericError />}>
       <Router basename="astron">
-        <div className="App">
+        <div className="App bg-dark">
           <Routes>
             <Route exact path="/home" element={<HomePage />} />
             <Route exact path="/booking" element={<BookingCreation />} />
