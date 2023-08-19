@@ -47,21 +47,41 @@ const Medical = () => {
                   <label className='float-start'>Surgical History</label>
                   <input type="text" name="course" className="form-control" />
                 </div>
-                <div className='mb-3 col-md-12 float-start'>
+                <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Oxygen Level</label>
-                  <input type="text" name="course" className="form-control" />
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
                 </div>
-                <div className='mb-3 col-md-12 float-start'>
+                <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Heart Beat</label>
-                  <input type="text" name="course" className="form-control" />
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
                 </div>
-                <div className='mb-3 col-md-12 float-start'>
+                <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Pressure</label>
-                  <input type="text" name="course" className="form-control" />
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
                 </div>
-                <div className='mb-3 col-md-12 float-start'>
+                <div className='mb-3 col-md-5 float-start'>
                   <label className='float-start'>Blood Group</label>
-                  <input type="text" name="course" className="form-control" />
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
                 </div>
                 <div className='mb-3 col-md-12 float-start'>
                   <label className='float-start'>Additional Note</label>
