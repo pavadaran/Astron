@@ -1,136 +1,87 @@
-import { useState, useEffect } from "react";
-import { db } from '../../firebase-config.js';
-import { onValue, ref } from '@firebase/database';
-import { BsFillArrowRightCircleFill } from 'react-icons/bs';
-import { BsArrowLeftCircleFill } from 'react-icons/bs';
-import { useContext } from "react";
+import { useContext, useEffect,useState } from "react";
+import { db } from "../../firebase-config";
 import { BookingContext } from "../../context/BookingContext.jsx";
+// import { database } from '../../path/to/firebase-config';
+import { onValue, ref } from "firebase/database";
 
-const PlaceSelection = (props) => {
+import "../../styles/PlanetSelection.css";
+
+const PlanetSelection = (props) => {
     const { currentPage, setCurrentPage } = props;
-    const [place, setPlace] = useState([]);
-    const [placeIndex, setPlaceIndex] = useState(0);
-    const [isLoading, setIsLoading] = useState(true);
+    const [ planets, setPlanets] = useState([]);
     const { getBookingContext, setBookingContext } = useContext(BookingContext);
 
-    const booking = BookingContext.planet;
-    const selectedPlanet = booking.name;   //this value should be dynamically changed
 
-    useEffect(() => {
-        const getPlaces = async () => {
-            try {
-                const placesRef = ref(db, "places");
-                
-                onValue(placesRef, (snapshot) => {
-                    const data = [];
-                    snapshot.forEach((childSnapshot) => {
-                        const placeData = childSnapshot.val();
-                        if (placeData.planet === selectedPlanet) {
-                            data.push({ ...placeData, id: childSnapshot.key });
-                        }
-                    });
-                    setPlace(data);
-                    setIsLoading(false);
+    const user =
+    {
+        userOxgenLevel: 87,
+        userSystolicPressure: 120,
+        userDiastolicPressure: 80
+    }
+
+ 
+    useEffect(() =>  {
+
+                const query = ref(db, "planets");
+                return onValue(query, (snapshot) => {
+                    const data = snapshot.val();
+                    if (snapshot.exists()) {
+                        Object.values(data).map((planet) => {
+                            console.log("planet",planet)
+                        //   setPlanets((planets) => [...planets, planet]);
+                        // planets.push(planet)
+                        const planetsArray = Object.values(data);
+                setPlanets(planetsArray);
+                          console.log("planets :",planets)
+                        });
+                      }
                 });
+    },[]);
 
-                setIsLoading(false);
+    const filteredPlanets = planets.filter((planet) => {
+        console.log("test1" + user.userOxgenLevel);
+        console.log("test1" + planet.minimumOxgenLevel);
+        return (
+            user.userOxgenLevel >= planet.minimumOxgenLevel &&
+            user.userSystolicPressure <= planet.systolicPressure &&
+            user.userDiastolicPressure <= planet.diastolicPressure
+        );
+    }
+    );
 
-            } catch (error) {
-                setIsLoading(false);
-                alert("Error fetching data");
-
-            }
-        };
-        getPlaces();
-    }, []);
-
-
-    const goToNextPlace = () => {
-        if (placeIndex < place.length - 1) {
-            setPlaceIndex(placeIndex + 1);
-        }
-        else {
-            setPlaceIndex(0);
-        }
-    };
-
-    const goToPreviousPlace = () => {
-        if (placeIndex > 0) {
-            setPlaceIndex(placeIndex - 1);
-        }
-        else {
-            setPlaceIndex(place.length - 1);
-        }
-    };
-
-
-    const iconsStyle = {
-        display: "inline-block",
-        background: "transparent",
-        border: "none",
-        cursor: "pointer",
+    const handleClick = (index) => {
+        // setBookingContext({ planet: list[index] });
+        setBookingContext({ planet: planets[index] });
+        setCurrentPage(currentPage + 1);
     }
 
-    const listBorder = {
-        border: "2px solid grey",
-        borderRadius: "8px",
-        background: "transparent",
-        width: '300px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        padding: '3%  6%',
-        color: 'grey',
-        margin: '2% 1%',
-    }
     return (
-        <>
-            {
-                isLoading ? ( 
-                    <div className="text-center">
-                    <div className="spinner-border" role="status">
-                    </div>
-                    Loading...
-                    </div>
-                    ) : (
-                    <div className="container-fluid" style={{backgroundColor: "black",color:"white",minHeight:'100vh'}}>
-    
-                            <h2 >Place Selection</h2>
-                            <h3 style={{color:"grey"}}>{selectedPlanet}</h3>
-                            <img src={require(`../../../site/public/images/planets/${selectedPlanet.toLowerCase()}.png`)} alt={selectedPlanet} width="250" height="250" />
-
-                        {place.length > 0 && (
-                            <div>
-                                <div>
-                                    <button onClick={goToPreviousPlace} style={iconsStyle}><BsArrowLeftCircleFill size={30} color="white" /></button>
-                                    <h3 style={{ display: "inline-block", width: '300px' }}>{place[placeIndex].place}</h3>
-                                    <button style={iconsStyle} onClick={goToNextPlace}><BsFillArrowRightCircleFill size={30} color="white" /></button>
-                                </div>
-
-                                <div>
-                                    <button onClick={goToPreviousPlace} style={iconsStyle}><BsArrowLeftCircleFill size={30} color="white" /></button>
-                                    <h3 style={{ display: "inline-block", width: '300px' }}>{place[placeIndex].place}</h3>
-                                    <button style={iconsStyle} onClick={goToNextPlace}><BsFillArrowRightCircleFill size={30} color="white" /></button>
-                                </div>
-
-                                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                    <ul className="list-group">
-                                        <h5 style={listBorder}><span>Area</span><span style={{ textAlign: 'right' }}>{place[placeIndex].area.toLocaleString()} km</span></h5>
-                                        <h5 style={listBorder}><span>Temperature</span><span style={{ textAlign: 'right' }}>{place[placeIndex].temperature}&deg;C</span></h5>
-                                        <h5 style={listBorder}><span>Gravity</span><span style={{ textAlign: 'right' }}>{place[placeIndex].gravity}g</span></h5>
-                                    </ul>
-                                </div>
-                            </div>
-                        )}
-                        <div>
-                            <button type="button" className="btn btn-primary my-3 mx-1 fs-6" style={{ width: '150px' }} onClick={() => setCurrentPage(currentPage - 1)}>Back</button>
-                            <button type="button" className="btn btn-danger my-3 mx-1  fs-6" style={{ width: '150px' }} onClick={() => setCurrentPage(currentPage + 1)}>Continue</button>
+        <div className="back-ground">
+            <h1 className="heading">Planet</h1>
+            <div className="planetContainer">
+                {console.log("hello",filteredPlanets)}
+                {planets.map((planet, index) => (
+                    <div className="planet-card" key={index}>
+                        <div className="planet-left">
+                            <img className="card-img" src={planet.image} alt={planet.name} />
+                        </div>
+                        <div className="planet-center">
+                            <p className="planet-name">{planet.name}</p>
+                            <p className="distance">{planet.distance}</p>
+                        </div>
+                        <div className="planet-right">
+                            <svg onClick={() => {
+                                handleClick(index);
+                            }} xmlns="http://www.w3.org/2000/svg" width="35" height="36" viewBox="0 0 35 36" fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.66528 1.51833H25.0367C29.8121 1.51833 33.6832 5.38948 33.6832 10.1648V25.5363C33.6832 30.3116 29.8121 34.1827 25.0367 34.1827H9.66528C4.88997 34.1827 1.01882 30.3116 1.01882 25.5363V10.1648C1.01882 5.38948 4.88997 1.51833 9.66528 1.51833ZM0.0581055 10.1648C0.0581055 4.85889 4.35938 0.557617 9.66528 0.557617H25.0367C30.3426 0.557617 34.6439 4.85889 34.6439 10.1648V25.5363C34.6439 30.8422 30.3426 35.1434 25.0367 35.1434H9.66528C4.35938 35.1434 0.0581055 30.8422 0.0581055 25.5363V10.1648ZM13.8478 8.86441C13.6602 8.67681 13.3561 8.67681 13.1685 8.86441C12.9809 9.052 12.9809 9.35614 13.1685 9.54374L21.4753 17.8505L13.1685 26.1573C12.9809 26.3449 12.9809 26.6491 13.1685 26.8366C13.3561 27.0242 13.6602 27.0242 13.8478 26.8366L22.4943 18.1902C22.6819 18.0026 22.6819 17.6985 22.4943 17.5109L13.8478 8.86441Z" fill="white" />
+                            </svg>
                         </div>
                     </div>
-                )
-            }
-        </>
-
+                ))}
+            </div>
+            {/* <button onClick={() => setCurrentPage(currentPage + 1)}>Next</button> */}
+        </div>
     )
 }
 
-export default PlaceSelection;
+export default PlanetSelection;
