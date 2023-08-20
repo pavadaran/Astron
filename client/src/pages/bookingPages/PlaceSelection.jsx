@@ -5,6 +5,7 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { BsArrowLeftCircleFill } from 'react-icons/bs';
 import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext.jsx";
+
 const PlaceSelection = (props) => {
     const { currentPage, setCurrentPage } = props;
     const [place, setPlace] = useState([]);
@@ -13,7 +14,7 @@ const PlaceSelection = (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const { getBookingContext, setBookingContext } = useContext(BookingContext);
 
-    const selectedPlanet = 'Mercury';   //this value should be dynmaically changed
+    const selectedPlanet = 'Mercury';   //this value should be dynamically changed
 
     useEffect(() => {
         const getPlaces = async () => {
