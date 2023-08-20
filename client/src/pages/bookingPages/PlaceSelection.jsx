@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { collection, getDocs, query, where } from '@firebase/firestore';
 import { db } from '../../firebase-config.js';
+import { onValue, ref } from '@firebase/database';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { BsArrowLeftCircleFill } from 'react-icons/bs';
 
@@ -8,28 +8,39 @@ import { BsArrowLeftCircleFill } from 'react-icons/bs';
 const PlaceSelection = (props) => {
     const { currentPage, setCurrentPage } = props;
     const [place, setPlace] = useState([]);
-    const placeCollectionRef = collection(db, "planetplaces")
     const [placeIndex, setPlaceIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
 
-    const selectedPlanet = 'Mercury';   //this value should be dynmaically changed
+    const selectedPlanet = 'Mars';   //this value should be dynmaically changed
 
     useEffect(() =>  {
         const getPlaces = async () => {
             try {
-                const planetQuery = query(placeCollectionRef, where("planet", "==", selectedPlanet));
-                const querySnapshot = await getDocs(planetQuery);
-                const data = querySnapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
-                setPlace(data);
+                const placesRef = ref(db, "places");
+                
+                onValue(placesRef, (snapshot) => {
+                    const data = [];
+                    snapshot.forEach((childSnapshot) => {
+                        const placeData = childSnapshot.val();
+                        if (placeData.planet === selectedPlanet) {
+                            data.push({ ...placeData, id: childSnapshot.key });
+                        }
+                    });
+                    setPlace(data);
+                    setIsLoading(false);
+                });
+
                 setIsLoading(false);
+
             } catch (error) {
                 setIsLoading(false);
-                alert("Error fetching data");
+                alert("Error fetching data" + error);
                 
             }
         }; 
         getPlaces();
     },[]);
+
 
     const goToNextPlace = () => {
         if (placeIndex < place.length - 1) {
@@ -72,8 +83,14 @@ const PlaceSelection = (props) => {
     return (
         <>
             {
-                isLoading ? ( <p>Loading...</p> ) : (
-                    <div className="container-fluid" style={{backgroundColor: "black",color:"white"}}>
+                isLoading ? ( 
+                    <div className="text-center">
+                    <div className="spinner-border" role="status">
+                    </div>
+                    Loading...
+                    </div>
+                    ) : (
+                    <div className="container-fluid" style={{backgroundColor: "black",color:"white",minHeight:'100vh'}}>
     
                             <h2 >Place Selection</h2>
                             <h3 style={{color:"grey"}}>{selectedPlanet}</h3>
