@@ -1,0 +1,110 @@
+@media (max-width: 768px) {
+
+    .BookTicket {
+        text-align: center;
+    }
+
+    .Date {
+        text-align: left;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    .Travelmode {
+        text-align: left;
+    }
+
+    .Ticketcounter {
+        text-align: left;
+    }
+
+    .travel {
+        font-weight: bold;
+
+    }
+
+    .Back {
+        text-align: left;
+    }
+
+    .child {
+        display: flex;
+        height: 21px;
+        margin-bottom: 20px;
+    }
+
+    .children {
+        margin-left: 10px;
+        display: flex;
+    }
+
+    .count {
+        width: 19px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .counts {
+        width: 19px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .continue {
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .custom-button {
+        font-size: 16px;
+        background-color: red;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    /* Apply styles to the radio buttons */
+    .Travelmode input[type="radio"] {
+        /* Hide the default radio button */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #555;
+        /* Outer circle color */
+        outline: none;
+        transition: border-color 0.3s ease-in-out;
+    }
+
+    /* Apply styles to the checked radio buttons */
+    .Travelmode input[type="radio"]:checked {
+        border-color: #007bff;
+        /* Change outer circle color when checked */
+    }
+
+    /* Apply styles to the inner dot of checked radio buttons */
+    .Travelmode input[type="radio"]:checked::before {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 8px;
+        background-color: #007bff;
+        /* Inner dot color when checked */
+        border-radius: 50%;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Additional styles to change text color of the label when checked */
+    .Travelmode input[type="radio"]:checked+label {
+        color: #007bff;
+        /* Change label text color when radio button is checked */
+    }
+
+
+
+}
