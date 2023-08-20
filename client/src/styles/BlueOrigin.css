@@ -1,0 +1,101 @@
+@media (max-width: 768px) {
+    .scrollable-div {
+        overflow: auto; /* or overflow: scroll; */
+      }
+      
+    .heading {
+        color: white;
+    }
+
+    .back-ground {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-image: url("https://live.staticflickr.com/65535/53122546055_9b05b19c9a_w.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .cover{
+        position:relative;
+        height: 350px;
+        background-color: rgb(97, 94, 94);
+        background-size:contain;
+        background-repeat: no-repeat;
+        border-radius: 5%;
+        opacity: 54%;
+
+    }
+    .cover-container {
+        position: relative;
+        /* Required for absolute positioning */
+        height: 200px;
+        /* Adjust height as needed */
+        background-image: url("../assets/blue\ origin\ 1.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 20px 0;
+        /* background-color: aqua; */
+    }
+
+    .name {
+        position: absolute;
+        top: 80%;
+        /* Position at the vertical center */
+        left: 30%;
+        /* Position at the horizontal center */
+        transform: translate(-50%, -50%);
+        /* Center the element perfectly */
+        font-size: 30px;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .details-row {
+        margin-top: 10px;
+    }
+
+    .sub-heading {
+        color: white;
+        font-size: 24px;
+        text-align: left;
+        /* margin-left: 15px; */
+        margin: 4px 15px;
+    }
+
+    .vl {
+        width: 90%;
+        height: 2px;
+        background-color: white;
+        margin-left: 15px;
+    }
+
+    .description {
+        color: white;
+        font-size: 20px;
+        text-align: left;
+        margin-left: 15px;
+        width: 90%;
+    }
+
+    .back-button{
+        float: left;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
+
+    .continue-button {
+        margin-top: 15px;
+        color:white;
+        border-radius: 10px;
+        padding: 10px 20px;
+        border: none;
+        font-size: 20px;
+        background: #B02C0F;
+        box-shadow: 0px 2px 20px 0px rgba(252, 16, 85, 0.25);
+    }
+}
