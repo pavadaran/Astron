@@ -1,0 +1,75 @@
+@media (max-width: 768px) {
+    .heading {
+        color: white;
+    }
+
+    .cover-container {
+        position: relative;
+        /* Required for absolute positioning */
+        height: 200px;
+        /* Adjust height as needed */
+        background-image: url("../assets/planetdetails.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin: 20px 0;
+        /* background-color: aqua; */
+    }
+
+    .name {
+        position: absolute;
+        top: 80%;
+        /* Position at the vertical center */
+        left: 15%;
+        /* Position at the horizontal center */
+        transform: translate(-50%, -50%);
+        /* Center the element perfectly */
+        font-size: 48px;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .details-row {
+        margin-top: 10px;
+    }
+
+    .sub-heading {
+        color: white;
+        font-size: 24px;
+        text-align: left;
+        /* margin-left: 15px; */
+        margin: 4px 15px;
+    }
+
+    .vl {
+        width: 90%;
+        height: 2px;
+        background-color: white;
+        margin-left: 15px;
+    }
+
+    .description {
+        color: white;
+        font-size: 20px;
+        text-align: left;
+        margin-left: 15px;
+        width: 90%;
+    }
+
+    .back-button{
+        float: left;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
+
+    .continue-button {
+        margin-top: 15px;
+        color:white;
+        border-radius: 10px;
+        padding: 10px 20px;
+        border: none;
+        font-size: 20px;
+        background: #B02C0F;
+        box-shadow: 0px 2px 20px 0px rgba(252, 16, 85, 0.25);
+    }
+}

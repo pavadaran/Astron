@@ -1,0 +1,80 @@
+.heading {
+  color: black
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .heading {
+    color: white;
+  }
+
+  .back-ground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url("https://live.staticflickr.com/65535/53122546055_9b05b19c9a_w.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .planetContainer {
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .planet-card {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 20px;
+    align-items: center;
+    /* border: 2px solid; */
+    /* background-color: rgba(0, 0, 0, 0.7); */
+  }
+
+  .planet-left {
+    flex: 40%;
+  }
+
+  .planet-center {
+    flex: 50%;
+  }
+
+  .planet-right {
+    flex: 10%;
+  }
+
+  .card-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .planet-name {
+    /* margin-top: 10px; */
+    font-size: 40px;
+    color: white;
+    margin: 0;
+    text-align: left;
+    margin-left: 5px;
+  }
+
+  .distance {
+    /* margin-top: 10px; */
+    font-size: 20px;
+    color: white;
+    margin: 0;
+    text-align: left;
+    margin-left: 5px;
+  }
+
+
+}
