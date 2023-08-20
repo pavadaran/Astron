@@ -37,8 +37,7 @@ const Medical = () => {
     e.preventDefault();
 
     const db = getDatabase();
-    console.log(db.collection('users'));
-    set(ref(db, 'users/'), {
+    set(ref(db, 'medical/2'), {
       name: medical.name,
       allergies: medical.allergies,
       History: medical.History,
