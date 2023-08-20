@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext.jsx";
 
 import "../../styles/PlanetSelection.css";
-import mars from "../../assets/mars.png"
-import venus from "../../assets/venus.png";
-import sun from "../../assets/sun.png";
-import mercury from "../../assets/mercury.png";
+import mars from "../../../site/public/images/planets/mars.png"
+import venus from "../../../site/public/images/planets/mars.png"
+import sun from "../../../site/public/images/planets/mars.png"
+import mercury from "../../../site/public/images/planets/mars.png";
 
 const PlanetSelection = (props) => {
     const { currentPage, setCurrentPage } = props;
@@ -62,7 +62,7 @@ const PlanetSelection = (props) => {
                             <img className="card-img" src={planet.image} alt={planet.name} />
                         </div>
                         <div className="planet-center">
-                            <p className="name">{planet.name}</p>
+                            <p className="planet-name">{planet.name}</p>
                             <p className="distance">{planet.distance}</p>
                         </div>
                         <div className="planet-right">

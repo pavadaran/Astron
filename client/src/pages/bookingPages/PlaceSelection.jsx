@@ -74,13 +74,17 @@ const PlaceSelection = (props) => {
             {
                 isLoading ? (<p>Loading...</p>) : (
                     <div className="container-fluid" style={{ backgroundColor: "black", color: "white" }}>
-
                         <h2 >Place Selection</h2>
                         <h3 style={{ color: "grey" }}>{selectedPlanet}</h3>
                         <img src={require(`../../../site/public/images/planets/${selectedPlanet.toLowerCase()}.png`)} alt={selectedPlanet} width="250" height="250" />
 
                         {place.length > 0 && (
                             <div>
+                                <div>
+                                    <button onClick={goToPreviousPlace} style={iconsStyle}><BsArrowLeftCircleFill size={30} color="white" /></button>
+                                    <h3 style={{ display: "inline-block", width: '300px' }}>{place[placeIndex].place}</h3>
+                                    <button style={iconsStyle} onClick={goToNextPlace}><BsFillArrowRightCircleFill size={30} color="white" /></button>
+                                </div>
 
                                 <div>
                                     <button onClick={goToPreviousPlace} style={iconsStyle}><BsArrowLeftCircleFill size={30} color="white" /></button>
@@ -95,15 +99,12 @@ const PlaceSelection = (props) => {
                                         <h5 style={listBorder}><span>Gravity</span><span style={{ textAlign: 'right' }}>{place[placeIndex].gravity}g</span></h5>
                                     </ul>
                                 </div>
-
                             </div>
                         )}
                         <div>
                             <button type="button" className="btn btn-primary my-3 mx-1 fs-6" style={{ width: '150px' }} onClick={() => setCurrentPage(currentPage - 1)}>Back</button>
                             <button type="button" className="btn btn-danger my-3 mx-1  fs-6" style={{ width: '150px' }} onClick={() => setCurrentPage(currentPage + 1)}>Continue</button>
                         </div>
-
-
                     </div>
                 )
             }
