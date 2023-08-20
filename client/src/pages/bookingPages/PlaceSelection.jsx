@@ -1,5 +1,10 @@
+import { useContext } from "react";
+
+import { BookingContext } from "../../context/BookingContext.jsx";
+
 const PlaceSelection = (props) => {
     const { currentPage, setCurrentPage } = props;
+    const { getBookingContext, setBookingContext } = useContext(BookingContext);
 
     return (
         <>
