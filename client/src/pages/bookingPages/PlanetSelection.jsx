@@ -61,7 +61,7 @@ const PlanetSelection = (props) => {
                             <img className="card-img" src={planet.image} alt={planet.name} />
                         </div>
                         <div className="planet-center">
-                            <p className="name">{planet.name}</p>
+                            <p className="planet-name">{planet.name}</p>
                             <p className="distance">{planet.distance}</p>
                         </div>
                         <div className="planet-right">
