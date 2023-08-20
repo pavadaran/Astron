@@ -3,14 +3,15 @@ import { collection, getDocs, query, where } from '@firebase/firestore';
 import { db } from '../../firebase-config.js';
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { BsArrowLeftCircleFill } from 'react-icons/bs';
-
-
+import { useContext } from "react";
+import { BookingContext } from "../../context/BookingContext.jsx";
 const PlaceSelection = (props) => {
-    const { currentPage, setCurrentPage } = props;
+     const { currentPage, setCurrentPage } = props;
     const [place, setPlace] = useState([]);
     const placeCollectionRef = collection(db, "planetplaces")
     const [placeIndex, setPlaceIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+   const { getBookingContext, setBookingContext } = useContext(BookingContext);
 
     const selectedPlanet = 'Mercury';   //this value should be dynmaically changed
 
@@ -68,7 +69,6 @@ const PlaceSelection = (props) => {
         color: 'grey',
         margin: '2% 1%',
     }
-
     return (
         <>
             {
