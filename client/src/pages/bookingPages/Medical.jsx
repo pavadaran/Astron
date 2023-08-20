@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, navigate, useNavigate } from 'react-router-dom';
 
 const Medical = () => {
 
@@ -14,6 +14,8 @@ const Medical = () => {
     AdditionalNote: '',
     SurgicalHistory: ''
   })
+
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
     e.persist();
@@ -40,7 +42,7 @@ const Medical = () => {
       AdditionalNote: medical.AdditionalNote,
       SurgicalHistory: medical.SurgicalHistory
     }
-    
+    navigate("/booking");
     //console.log(data);
   }
 
