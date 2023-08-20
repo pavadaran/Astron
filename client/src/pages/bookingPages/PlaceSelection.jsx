@@ -86,6 +86,12 @@ const PlaceSelection = (props) => {
                                     <button style={iconsStyle} onClick={goToNextPlace}><BsFillArrowRightCircleFill size={30} color="white" /></button>
                                 </div>
 
+                                <div>
+                                    <button onClick={goToPreviousPlace} style={iconsStyle}><BsArrowLeftCircleFill size={30} color="white" /></button>
+                                    <h3 style={{ display: "inline-block", width: '300px' }}>{place[placeIndex].place}</h3>
+                                    <button style={iconsStyle} onClick={goToNextPlace}><BsFillArrowRightCircleFill size={30} color="white" /></button>
+                                </div>
+
                                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                                     <ul className="list-group">
                                         <h5 style={listBorder}><span>Area</span><span style={{ textAlign: 'right' }}>{place[placeIndex].area.toLocaleString()} km</span></h5>

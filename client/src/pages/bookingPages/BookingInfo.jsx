@@ -9,8 +9,8 @@ const BookingInfo = (props) => {
     return (
         <>
             <h1>Booking Information</h1>
-            <button onClick={() => setCurrentPage(currentPage+1)}>Next</button>
-            <button onClick={() => setCurrentPage(currentPage-1)}>Back</button>
+            <button onClick={() => setCurrentPage(currentPage + 1)}>Next</button>
+            <button onClick={() => setCurrentPage(currentPage - 1)}>Back</button>
         </>
     )
 }
