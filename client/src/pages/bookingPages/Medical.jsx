@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { firestore } from '../../firebase';
-import { collection, addDoc } from "firebase/firestore";
+import { database } from '../../firebase';
+import { ref, getDatabase, set } from "firebase/database"
+import {firebase} from '../../firebase'
+require('firebase/auth')
 
 const Medical = () => {
 
-  const ref = collection(firestore, "medicalData");
+  // const ref = collection(firestore, "medicalData");
 
   const [medical, setMedical] = useState({
     name: '',
@@ -19,8 +21,6 @@ const Medical = () => {
     AdditionalNote: '',
     SurgicalHistory: ''
   })
-
-  const navigate = useNavigate();
 
   const handleInput = (e) => {
     e.persist();
@@ -36,7 +36,9 @@ const Medical = () => {
   const saveStudent = (e) => {
     e.preventDefault();
 
-    const data = {
+    const db = getDatabase();
+    console.log(db.collection('users'));
+    set(ref(db, 'users/'), {
       name: medical.name,
       allergies: medical.allergies,
       History: medical.History,
@@ -47,15 +49,8 @@ const Medical = () => {
       BloodGroup: medical.BloodGroup,
       AdditionalNote: medical.AdditionalNote,
       SurgicalHistory: medical.SurgicalHistory
-    }
-
-    try {
-      addDoc(ref, data);
-      console.log("Success");
-      navigate("/booking");
-    } catch {
-      console.log("Error");
-    }
+    });
+    console.log("Success");
     //console.log(data);
   }
 
@@ -98,7 +93,7 @@ const Medical = () => {
                     <br />
                     <input type="number" pattern="[0-9]*" name="Pressure" value={medical.Pressure} onChange={handleInput} className="smaller-input" required />
                     <div>/</div>
-                    <input type="number" pattern="[0-9]*" value={medical.Pressure2} onChange={handleInput} className="smaller-input" required />
+                    <input type="number" pattern="[0-9]*" name="Pressure2" value={medical.Pressure2} onChange={handleInput} className="smaller-input" required />
                   </div>
                   <div className='mb-3 col-md-2 float-start'></div>
                   <div className='mb-3 col-md-5 float-start'>

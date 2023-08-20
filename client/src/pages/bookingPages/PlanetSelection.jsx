@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { BookingContext } from "../../context/BookingContext.jsx";
 
 import "../../styles/PlanetSelection.css";
-import mars from "../../assets/mars.png"
-import venus from "../../assets/venus.png";
-import sun from "../../assets/sun.png";
-import mercury from "../../assets/mercury.png";
+import mars from "../../../site/public/images/planets/mars.png"
+import venus from "../../../site/public/images/planets/venus.png"
+import sun from "../../../site/public/images/planets/mars.png"
+import mercury from "../../../site/public/images/planets/mercury.png";
 
 const PlanetSelection = (props) => {
     const { currentPage, setCurrentPage } = props;
