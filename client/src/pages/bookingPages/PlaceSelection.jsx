@@ -98,8 +98,11 @@ const PlaceSelection = (props) => {
                                 
                     </div>
                         )}
-                            <button type="button"  className="btn btn-primary my-3 mx-1 fs-6" style={{width:'150px'}} onClick={() => setCurrentPage(currentPage-1)}>Back</button>
-                            <button type="button"  className="btn btn-danger my-3 mx-1  fs-6" style={{width:'150px'}}  onClick={() => setCurrentPage(currentPage+1)}>Continue</button>
+                        <div>
+                        <button type="button"  className="btn btn-primary my-3 mx-1 fs-6" style={{width:'150px'}} onClick={() => setCurrentPage(currentPage-1)}>Back</button>
+                        <button type="button"  className="btn btn-danger my-3 mx-1  fs-6" style={{width:'150px'}}  onClick={() => setCurrentPage(currentPage+1)}>Continue</button>
+                        </div>
+                            
 
                     </div>
                 )
