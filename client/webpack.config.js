@@ -1,10 +1,15 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv')
 const isProduction = process.env.NODE_ENV === "production";
 
 /**
  * Webpack configuration file.
  */
+
+dotenv.config();
+
 const config = {
     entry: [
         './src/index.js'
@@ -49,7 +54,10 @@ const config = {
             filename: path.resolve(__dirname, "site/public/dist/index.html"),
             favicon: path.resolve(__dirname, "site/public/images/favicon.png"),
             template: path.resolve(__dirname, "site/public/pages/index.template.html"),
-        })
+        }),
+        new webpack.DefinePlugin({
+            'process.env': JSON.stringify(process.env),
+        }),
     ],
     devServer: {
         open: '/astron/home',
